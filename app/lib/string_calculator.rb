@@ -6,7 +6,12 @@ class StringCalculator
     numbers.to_i unless numbers.include?(",")
 
     # Handle multiple numbers by splitting the string by commas
-    nums = numbers.split(",").map(&:to_i)
+    delimiter = ","
+
+    # Replace newlines with commas
+    numbers   = numbers.gsub("\n", delimiter)
+
+    nums      = numbers.split(delimiter).map(&:to_i)
 
     nums.sum
   end
