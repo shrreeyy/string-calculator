@@ -15,5 +15,9 @@ RSpec.describe StringCalculator do
     it 'returns the sum when the input contains comma-delimited numbers' do
       expect(StringCalculator.add("1,2,3")).to eq(6)
     end
+
+    it 'returns the sum when the input contains newline-delimited numbers' do
+      expect(StringCalculator.add("1\n2\n3")).to eq(6)
+    end
   end
 end
