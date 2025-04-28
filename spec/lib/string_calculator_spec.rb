@@ -11,5 +11,9 @@ RSpec.describe StringCalculator do
     it 'returns the number itself when the input is a single number' do
       expect(StringCalculator.add("1")).to eq(1)
     end
+
+    it 'returns the sum when the input contains comma-delimited numbers' do
+      expect(StringCalculator.add("1,2,3")).to eq(6)
+    end
   end
 end
