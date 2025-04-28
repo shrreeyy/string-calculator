@@ -18,6 +18,12 @@ class StringCalculator
     # Handle multiple numbers by splitting the string by the delimiter
     nums = numbers.split(delimiter).map(&:to_i)
 
+    # Check for negative numbers
+    negative_numbers = nums.select { |n| n < 0 }
+    if negative_numbers.any?
+      raise "negative numbers not allowed: #{negative_numbers.join(', ')}"
+    end
+
     nums.sum
   end
 
