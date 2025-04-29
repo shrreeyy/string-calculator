@@ -9,6 +9,7 @@ class StringCalculator
       delimiter, numbers = parse_custom_delimiter(numbers)
     end
 
+
     # Replace newlines with the chosen delimiter
     numbers = numbers.gsub("\n", delimiter)
 
@@ -17,6 +18,9 @@ class StringCalculator
 
     # Handle multiple numbers by splitting the string by the delimiter
     nums = numbers.split(delimiter).map(&:to_i)
+
+    # Ignore numbers greater than 1000
+    nums.reject! { |n| n > 1000 }
 
     # Check for negative numbers
     negative_numbers = nums.select { |n| n < 0 }

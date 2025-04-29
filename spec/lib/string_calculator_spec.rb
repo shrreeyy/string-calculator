@@ -31,5 +31,13 @@ RSpec.describe StringCalculator do
     it 'raises an exception when negative numbers are provided' do
       expect { StringCalculator.add("1,-2,3,-4") }.to raise_error(RuntimeError, "negative numbers not allowed: -2, -4")
     end
+
+    it 'returns the sum of many numbers with a custom delimiter' do
+      expect(StringCalculator.add("//|\n1|2|3|4|5")).to eq(15)
+    end
+
+    it 'ignores numbers greater than 1000 in the sum' do
+      expect(StringCalculator.add("1,2,3,4,1001")).to eq(10)
+    end
   end
 end
