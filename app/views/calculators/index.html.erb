@@ -1,0 +1,23 @@
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <div style="width: 400px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); background-color: #f9f9f9;">
+
+    <h2 style="text-align: center; margin-bottom: 20px;">String Calculator</h2>
+
+    <%= form_with url: calculate_path, method: :post do %>
+      <div style="margin-bottom: 15px;">
+        <%= label_tag :input_string, "Enter numbers:" %><br>
+        <%= text_field_tag :input_string, params[:input_string], placeholder: "1,2,3", style: "width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc;", autocomplete: "off" %>
+      </div>
+
+      <div style="text-align: center;">
+        <%= submit_tag "Calculate", style: "padding: 8px 16px; border: none; background-color: #007bff; color: white; border-radius: 5px; cursor: pointer;" %>
+      </div>
+    <% end %>
+
+    <% if @result.present? %>
+      <h3 style="text-align: center; color: green;">Result: <%= @result %></h3>
+    <% elsif @error.present? %>
+      <h3 style="text-align: center; color: red;">Error: <%= @error %></h3>
+    <% end %>
+  </div>
+</div>
