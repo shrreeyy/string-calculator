@@ -9,7 +9,6 @@ class StringCalculator
       delimiter, numbers = parse_custom_delimiter(numbers)
     end
 
-
     # Replace newlines with the chosen delimiter
     numbers = numbers.gsub("\n", delimiter)
 
@@ -24,6 +23,7 @@ class StringCalculator
 
     # Check for negative numbers
     negative_numbers = nums.select { |n| n < 0 }
+
     if negative_numbers.any?
       raise "negative numbers not allowed: #{negative_numbers.join(', ')}"
     end
@@ -34,8 +34,12 @@ class StringCalculator
   private
 
   def self.parse_custom_delimiter(numbers)
-    parts = numbers.split("\n", 2)
-    delimiter = parts[0][2..-1]
-    [ delimiter, parts[1] ]
+    header, body = numbers.split("\n", 2)
+
+    raise "Invalid format: missing newline after delimiter" unless body
+
+    delimiter = header[2..-1]
+
+    [ delimiter, body ]
   end
 end
