@@ -57,5 +57,13 @@ RSpec.describe CalculatorsController, type: :controller do
         expect(response).to render_template(:index)
       end
     end
+
+    context "when using a custom delimiter but newline is missing after delimiter" do
+      it "calculates the sum correctly with custom delimiter" do
+        post :calculate, params: { input_string: "//;1;2" }
+        expect(assigns(:error)).to eq("Invalid format: missing newline after delimiter")
+        expect(response).to render_template(:index)
+      end
+    end
   end
 end
