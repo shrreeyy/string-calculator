@@ -14,10 +14,6 @@
       </div>
     <% end %>
 
-    <% if @result.present? %>
-      <h3 style="text-align: center; color: green;">Result: <%= @result %></h3>
-    <% elsif @error.present? %>
-      <h3 style="text-align: center; color: red;">Error: <%= @error %></h3>
-    <% end %>
+    <%= render partial: "result" %>
   </div>
 </div>
